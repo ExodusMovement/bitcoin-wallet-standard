@@ -1,0 +1,57 @@
+{
+    "private": true,
+    "version": "0.0.0",
+    "author": "Exodus Maintainers <maintainers@exodus.com>",
+    "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
+    "license": "Apache-2.0",
+    "engines": {
+        "node": ">=16",
+        "pnpm": ">=7"
+    },
+    "scripts": {
+        "nuke": "shx rm -rf packages/*/*/node_modules node_modules pnpm-lock.yaml || true",
+        "reinstall": "pnpm run nuke && pnpm install",
+        "clean": "pnpm --recursive --workspace-concurrency=0 run clean",
+        "build": "pnpm run build:ts && pnpm run build:package && pnpm run build:other",
+        "ts": "pnpm run build:ts",
+        "build:ts": "tsc --build --verbose tsconfig.all.json",
+        "build:package": "pnpm --recursive --workspace-concurrency=0 run package",
+        "build:other": "pnpm --recursive --workspace-concurrency=0 run build",
+        "build:clean": "pnpm run clean && pnpm run build",
+        "release": "pnpm run build:clean && changeset publish && git push --follow-tags && git status",
+        "watch": "pnpm run watch:ts",
+        "watch:ts": "tsc --build --verbose --watch tsconfig.all.json",
+        "fmt": "prettier --write '{*,**/*}.{ts,tsx,js,jsx,json}'",
+        "lint": "prettier --check '{*,**/*}.{ts,tsx,js,jsx,json}' && eslint .",
+        "lint:fix": "pnpm run fmt && eslint --fix .",
+        "test": "pnpm --recursive --workspace-concurrency=0 run test",
+        "deploy": "pnpm run deploy:docs",
+        "docs": "shx rm -rf docs && NODE_OPTIONS=--max_old_space_size=16000 typedoc && shx cp .nojekyll docs/",
+        "deploy:docs": "pnpm run docs && gh-pages --dist docs --dotfiles"
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.25.0",
+        "@types/chrome": "^0.0.195",
+        "@types/node": "^18.11.5",
+        "@typescript-eslint/eslint-plugin": "^5.41.0",
+        "@typescript-eslint/parser": "^5.41.0",
+        "eslint": "8.22.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.31.10",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-require-extensions": "^0.1.1",
+        "gh-pages": "^4.0.0",
+        "pnpm": "^7.14.0",
+        "prettier": "^2.7.1",
+        "shx": "^0.3.4",
+        "typedoc": "^0.23.18",
+        "typescript": "~4.7.4"
+    },
+    "resolutions": {
+        "eslint": "8.22.0"
+    },
+    "overrides": {
+        "eslint": "8.22.0"
+    }
+}

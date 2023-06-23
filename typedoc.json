@@ -1,0 +1,6 @@
+{
+    "entryPoints": [],
+    "entryPointStrategy": "packages",
+    "out": "docs",
+    "readme": "README.md"
+}
