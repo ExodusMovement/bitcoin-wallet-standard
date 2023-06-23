@@ -83,6 +83,21 @@ importers:
     devDependencies:
       shx: 0.3.4
 
+  packages/wallets/exodus:
+    specifiers:
+      '@exodus/bitcoin-wallet-standard': workspace:^
+      '@wallet-standard/base': ^1.0.1
+      '@wallet-standard/features': ^1.0.3
+      '@wallet-standard/wallet': ^1.0.1
+      shx: ^0.3.4
+    dependencies:
+      '@exodus/bitcoin-wallet-standard': link:../../_/_
+      '@wallet-standard/base': 1.0.1
+      '@wallet-standard/features': 1.0.3
+      '@wallet-standard/wallet': 1.0.1
+    devDependencies:
+      shx: 0.3.4
+
 packages:
 
   /@babel/code-frame/7.22.5:
@@ -581,6 +596,13 @@ packages:
 
   /@wallet-standard/features/1.0.3:
     resolution: {integrity: sha512-m8475I6W5LTatTZuUz5JJNK42wFRgkJTB0I9tkruMwfqBF2UN2eomkYNVf9RbrsROelCRzSFmugqjKZBFaubsA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+    dev: false
+
+  /@wallet-standard/wallet/1.0.1:
+    resolution: {integrity: sha512-qkhJeuQU2afQTZ02yMZE5SFc91Fo3hyFjFkpQglHudENNyiSG0oUKcIjky8X32xVSaumgTZSQUAzpXnCTWHzKQ==}
     engines: {node: '>=16'}
     dependencies:
       '@wallet-standard/base': 1.0.1
