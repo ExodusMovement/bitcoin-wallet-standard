@@ -43,6 +43,46 @@ importers:
       typedoc: 0.23.28_typescript@4.7.4
       typescript: 4.7.4
 
+  packages/_/_:
+    specifiers:
+      '@exodus/bitcoin-wallet-standard-core': workspace:^
+      shx: ^0.3.4
+    dependencies:
+      '@exodus/bitcoin-wallet-standard-core': link:../../core/_
+    devDependencies:
+      shx: 0.3.4
+
+  packages/core/_:
+    specifiers:
+      '@exodus/bitcoin-wallet-standard-chains': workspace:^
+      '@exodus/bitcoin-wallet-standard-features': workspace:^
+      shx: ^0.3.4
+    dependencies:
+      '@exodus/bitcoin-wallet-standard-chains': link:../chains
+      '@exodus/bitcoin-wallet-standard-features': link:../features
+    devDependencies:
+      shx: 0.3.4
+
+  packages/core/chains:
+    specifiers:
+      '@wallet-standard/base': ^1.0.1
+      shx: ^0.3.4
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+    devDependencies:
+      shx: 0.3.4
+
+  packages/core/features:
+    specifiers:
+      '@wallet-standard/base': ^1.0.1
+      '@wallet-standard/features': ^1.0.3
+      shx: ^0.3.4
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+      '@wallet-standard/features': 1.0.3
+    devDependencies:
+      shx: 0.3.4
+
 packages:
 
   /@babel/code-frame/7.22.5:
@@ -533,6 +573,18 @@ packages:
       '@typescript-eslint/types': 5.60.0
       eslint-visitor-keys: 3.4.1
     dev: true
+
+  /@wallet-standard/base/1.0.1:
+    resolution: {integrity: sha512-1To3ekMfzhYxe0Yhkpri+Fedq0SYcfrOfJi3vbLjMwF2qiKPjTGLwZkf2C9ftdQmxES+hmxhBzTwF4KgcOwf8w==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /@wallet-standard/features/1.0.3:
+    resolution: {integrity: sha512-m8475I6W5LTatTZuUz5JJNK42wFRgkJTB0I9tkruMwfqBF2UN2eomkYNVf9RbrsROelCRzSFmugqjKZBFaubsA==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.9.0:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
