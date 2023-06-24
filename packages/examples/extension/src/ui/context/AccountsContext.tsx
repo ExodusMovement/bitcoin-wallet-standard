@@ -2,6 +2,7 @@ import type { FC, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
 import { rpc } from '../rpc';
+import { computeSegWitAddress, computeTaprootAddress } from '../../utils/address';
 
 export type Network = 'bitcoin' | 'ordinals';
 
@@ -14,11 +15,9 @@ export interface Account {
 function computeAddress(network: Network, publicKey: Uint8Array) {
     switch (network) {
         case 'bitcoin':
-            /** TODO: Implement. */
-            return '';
+            return computeSegWitAddress(publicKey);
         case 'ordinals':
-            /** TODO: Implement. */
-            return '';
+            return computeTaprootAddress(publicKey);
         default:
             throw new Error(`Unknown network: '${network}'`);
     }

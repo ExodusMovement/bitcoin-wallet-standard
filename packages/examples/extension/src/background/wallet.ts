@@ -1,4 +1,12 @@
+import ecc from '@bitcoinerlab/secp256k1';
+import { BIP32Factory } from 'bip32';
 import * as bip39 from 'bip39';
+
+const COIN_TYPE = 0;
+const SEGWIT_PURPOSE = 84;
+const TAPROOT_PURPOSE = 86;
+
+const bip32 = BIP32Factory(ecc);
 
 export type Mnemonic = string;
 
@@ -22,20 +30,22 @@ export function generateMnemonic(): Mnemonic {
 }
 
 function deriveBitcoinKeypair(mnemonic: Mnemonic, index = 0): Keypair {
-    /** TODO: Implement. */
-    // const seed = bip39.mnemonicToSeedSync(mnemonic, '');
+    const seed = bip39.mnemonicToSeedSync(mnemonic);
+    const root = bip32.fromSeed(seed);
+    const child = root.derivePath(`m/${SEGWIT_PURPOSE}'/${COIN_TYPE}'/0'/0/${index}`);
     return {
-        publicKey: new Uint8Array(),
-        privateKey: new Uint8Array(),
+        publicKey: child.publicKey,
+        privateKey: child.privateKey!,
     };
 }
 
 function deriveOrdinalsKeypair(mnemonic: Mnemonic, index = 0): Keypair {
-    /** TODO: Implement. */
-    // const seed = bip39.mnemonicToSeedSync(mnemonic, '');
+    const seed = bip39.mnemonicToSeedSync(mnemonic);
+    const root = bip32.fromSeed(seed);
+    const child = root.derivePath(`m/${TAPROOT_PURPOSE}'/${COIN_TYPE}'/0'/0/${index}`);
     return {
-        publicKey: new Uint8Array(),
-        privateKey: new Uint8Array(),
+        publicKey: child.publicKey,
+        privateKey: child.privateKey!,
     };
 }
 
