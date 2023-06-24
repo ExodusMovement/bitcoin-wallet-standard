@@ -14,6 +14,9 @@
             "path": "./packages/core/features/tsconfig.all.json"
         },
         {
+            "path": "./packages/examples/extension/tsconfig.all.json"
+        },
+        {
             "path": "./packages/wallets/exodus/tsconfig.all.json"
         }
     ]

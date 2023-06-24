@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "name": "@exodus/bitcoin-wallet-standard-example-extension",
+    "author": "Exodus Maintainers <maintainers@exodus.com>",
+    "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
+    "license": "Apache-2.0",
+    "source": "src/manifest.json",
+    "scripts": {
+        "clean": "shx mkdir -p .parcel-cache dist lib && shx rm -rf .parcel-cache dist lib",
+        "start": "parcel --host localhost --port 3000",
+        "build": "parcel build"
+    },
+    "dependencies": {
+        "@exodus/bitcoin-wallet-standard-exodus": "workspace:^",
+        "bip39": "^3.0.4",
+        "eventemitter3": "^5.0.1",
+        "jayson": "^4.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "@parcel/config-webextension": "^2.9.2",
+        "@types/react": "^18.0.21",
+        "@types/react-dom": "^18.0.6",
+        "parcel": "^2.8.1",
+        "shx": "^0.3.4"
+    }
+}

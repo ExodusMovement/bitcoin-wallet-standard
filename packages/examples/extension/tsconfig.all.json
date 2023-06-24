@@ -1,0 +1,14 @@
+{
+    "extends": "../../../tsconfig.root.json",
+    "references": [
+        {
+            "path": "../../core/_/tsconfig.all.json"
+        },
+        {
+            "path": "../../wallets/exodus/tsconfig.all.json"
+        },
+        {
+            "path": "./tsconfig.base.json"
+        }
+    ]
+}
