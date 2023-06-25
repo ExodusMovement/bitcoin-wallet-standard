@@ -4,7 +4,7 @@ import type { WalletAccount } from '@wallet-standard/base';
 const chains = BITCOIN_CHAINS;
 const features = [] as const;
 
-export class ExodusWalletAccount implements WalletAccount {
+export class SatsWalletAccount implements WalletAccount {
     readonly #address: WalletAccount['address'];
     readonly #publicKey: WalletAccount['publicKey'];
     readonly #chains: WalletAccount['chains'];
@@ -37,7 +37,7 @@ export class ExodusWalletAccount implements WalletAccount {
     }
 
     constructor({ address, publicKey, label, icon }: Omit<WalletAccount, 'chains' | 'features'>) {
-        if (new.target === ExodusWalletAccount) {
+        if (new.target === SatsWalletAccount) {
             Object.freeze(this);
         }
 

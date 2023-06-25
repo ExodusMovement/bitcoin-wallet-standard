@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@exodus/bitcoin-wallet-standard-exodus",
+    "name": "@exodus/bitcoin-wallet-standard-sats",
     "version": "0.0.0",
     "author": "Exodus Maintainers <maintainers@exodus.com>",
     "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
@@ -26,7 +26,8 @@
         "@exodus/bitcoin-wallet-standard": "workspace:^",
         "@wallet-standard/base": "^1.0.1",
         "@wallet-standard/features": "^1.0.3",
-        "@wallet-standard/wallet": "^1.0.1"
+        "@wallet-standard/wallet": "^1.0.1",
+        "sats-connect": "^0.2.0"
     },
     "devDependencies": {
         "shx": "^0.3.4"

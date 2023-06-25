@@ -13,25 +13,25 @@ import {
     type StandardEventsNames,
     type StandardEventsOnMethod,
 } from '@wallet-standard/features';
-import type { ExodusWalletAccount } from './account.js';
+import type { BitcoinProvider } from 'sats-connect';
+import type { SatsWalletAccount } from './account.js';
 import { icon } from './icon.js';
-import type { Exodus } from './window.js';
 
-export const ExodusNamespace = 'exodus:';
+export const SatsNamespace = 'sats:';
 
-export type ExodusFeature = {
-    [ExodusNamespace]: {
-        exodus: Exodus;
+export type SatsFeature = {
+    [SatsNamespace]: {
+        provider: BitcoinProvider;
     };
 };
 
-export class ExodusWallet implements Wallet {
+export class SatsWallet implements Wallet {
     readonly #listeners: { [E in StandardEventsNames]?: StandardEventsListeners[E][] } = {};
     readonly #version = '1.0.0' as const;
-    readonly #name = 'Exodus' as const;
+    readonly #name = 'Sats' as const;
     readonly #icon = icon;
-    #account: ExodusWalletAccount | null = null;
-    readonly #exodus: Exodus;
+    #account: SatsWalletAccount | null = null;
+    readonly #provider: BitcoinProvider;
 
     get version() {
         return this.#version;
@@ -49,7 +49,7 @@ export class ExodusWallet implements Wallet {
         return BITCOIN_CHAINS.slice();
     }
 
-    get features(): StandardConnectFeature & StandardDisconnectFeature & StandardEventsFeature & ExodusFeature {
+    get features(): StandardConnectFeature & StandardDisconnectFeature & StandardEventsFeature & SatsFeature {
         return {
             [StandardConnect]: {
                 version: '1.0.0',
@@ -63,9 +63,8 @@ export class ExodusWallet implements Wallet {
                 version: '1.0.0',
                 on: this.#on,
             },
-            /** TODO: Add Bitcoin features. */
-            [ExodusNamespace]: {
-                exodus: this.#exodus,
+            [SatsNamespace]: {
+                provider: this.#provider,
             },
         };
     }
@@ -74,16 +73,12 @@ export class ExodusWallet implements Wallet {
         return this.#account ? [this.#account] : [];
     }
 
-    constructor(exodus: Exodus) {
-        if (new.target === ExodusWallet) {
+    constructor(provider: BitcoinProvider) {
+        if (new.target === SatsWallet) {
             Object.freeze(this);
         }
 
-        this.#exodus = exodus;
-
-        /** TODO: Register event listeners. */
-        // exodus.on('connect', this.#connected, this);
-        // exodus.on('disconnect', this.#disconnected, this);
+        this.#provider = provider;
 
         this.#connected();
     }

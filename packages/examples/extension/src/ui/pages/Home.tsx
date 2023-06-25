@@ -8,7 +8,7 @@ export const Home: FC = () => {
 
     return (
         <div>
-            <h1>Exodus Wallet</h1>
+            <h1>Sats Wallet</h1>
             <ul>
                 {accounts.map((account) => (
                     <li key={account.address}>

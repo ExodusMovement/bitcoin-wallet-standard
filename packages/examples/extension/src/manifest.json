@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Exodus Wallet",
+    "name": "Sats Wallet",
     "description": "A Bitcoin & Ordinals wallet",
     "version": "0.0.0",
     "action": {
