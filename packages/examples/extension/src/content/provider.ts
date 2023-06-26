@@ -31,11 +31,11 @@ export class BitcoinProvider implements SatsConnectBitcoinProvider {
     }
 
     async signTransaction(request: string): Promise<SignTransactionResponse> {
-        return this.#rpc.callMethod('signTransaction', [request]);
+        throw new Error('Method not implemented.');
     }
 
     async signMessage(request: string): Promise<string> {
-        return this.#rpc.callMethod('signMessage', [request]);
+        throw new Error('Method not implemented.');
     }
 
     async call(request: string): Promise<Record<string, any>> {
