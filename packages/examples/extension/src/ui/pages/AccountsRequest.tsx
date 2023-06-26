@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import type { Account } from '../../types';
 import { condenseAddress } from '../../utils/address';
 import { useAccounts } from '../hooks/useAccounts';
-import { approveConnection, rejectConnection } from '../wallet';
+import { approveAccountsRequest, rejectAccountsRequest } from '../wallet';
 
-export const ApproveConnection: FC = () => {
+export const AccountsRequest: FC = () => {
     const accounts = useAccounts();
 
     const [selectedAccounts, setSelectedAccounts] = useState(new Map<string, Account>());
@@ -31,7 +31,7 @@ export const ApproveConnection: FC = () => {
 
     return (
         <div>
-            <h1>Approve Connection</h1>
+            <h1>Accounts Request</h1>
             <ul>
                 {accounts.map((account) => (
                     <li key={account.address}>
@@ -51,12 +51,12 @@ export const ApproveConnection: FC = () => {
                 ))}
             </ul>
             <div>
-                <button type="button" onClick={rejectConnection}>
+                <button type="button" onClick={rejectAccountsRequest}>
                     Reject
                 </button>
                 <button
                     type="button"
-                    onClick={() => approveConnection([...selectedAccounts.values()])}
+                    onClick={() => approveAccountsRequest([...selectedAccounts.values()])}
                     disabled={!hasSelectedAccounts}
                 >
                     Approve

@@ -3,13 +3,13 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { AppContext } from './context';
-import { ApproveConnection } from './pages/ApproveConnection';
+import { AccountsRequest } from './pages/AccountsRequest';
 import { Home } from './pages/Home';
 
 const Root: FC = () => {
     const queryParams = new URLSearchParams(window.location.search);
-    const isApproveConnection = queryParams.get('approveConnection') !== null;
-    const Route = isApproveConnection ? ApproveConnection : Home;
+    const isAccountsRequest = queryParams.get('accountsRequest') !== null;
+    const Route = isAccountsRequest ? AccountsRequest : Home;
 
     return (
         <StrictMode>

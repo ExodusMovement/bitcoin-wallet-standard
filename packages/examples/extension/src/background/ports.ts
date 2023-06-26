@@ -31,13 +31,13 @@ export function connectContent(port: chrome.runtime.Port) {
         const { closePopup, popupClosed } = await openPopup();
 
         const popupRPC = await asyncPopupRPC.get();
-        const connectResult = popupRPC.callMethod('connect');
+        const accounts = popupRPC.callMethod('requestAccounts');
 
-        const response = await Promise.race([connectResult, popupClosed]);
+        const result = await Promise.race([accounts, popupClosed]);
 
         closePopup();
 
-        return response;
+        return result;
     });
 
     port.onDisconnect.addListener(() => {

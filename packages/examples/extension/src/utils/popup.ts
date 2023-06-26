@@ -21,7 +21,8 @@ async function getPopupPosition() {
 async function createPopup(): Promise<chrome.windows.Window> {
     const { left, top } = await getPopupPosition();
     const popupURL = new URL('../ui/popup.html', import.meta.url);
-    popupURL.searchParams.append('approveConnection', 'true');
+    // TODO: Pass as a parameter to `createPopup`.
+    popupURL.searchParams.append('accountsRequest', 'true');
     return chrome.windows.create({
         url: popupURL.href,
         type: 'popup',

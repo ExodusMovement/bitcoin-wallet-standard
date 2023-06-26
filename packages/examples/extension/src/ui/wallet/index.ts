@@ -9,18 +9,18 @@ export function getAccounts(): Promise<Account[]> {
     return rpc.callMethod('getAccounts');
 }
 
-let resolveConnect: (value: Account[] | null) => void;
+let resolveAccountsRequest: (value: Account[]) => void;
 
-export function approveConnection(accounts: Account[]): void {
-    resolveConnect(accounts);
+export function approveAccountsRequest(accounts: Account[]): void {
+    resolveAccountsRequest(accounts);
 }
 
-export function rejectConnection(): void {
-    resolveConnect(null);
+export function rejectAccountsRequest(): void {
+    resolveAccountsRequest([]);
 }
 
-rpc.exposeMethod('connect', async () => {
+rpc.exposeMethod('requestAccounts', async () => {
     return new Promise((resolve) => {
-        resolveConnect = resolve;
+        resolveAccountsRequest = resolve;
     });
 });
