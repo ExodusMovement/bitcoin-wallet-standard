@@ -1,4 +1,4 @@
-import { CONTENT_PORT_NAME } from '../messages';
+import { CONTENT_PORT_NAME } from '../constants';
 import { inject } from './utils';
 
 const windowScript = new URL('./window.ts', import.meta.url);

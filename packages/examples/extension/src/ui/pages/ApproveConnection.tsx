@@ -1,29 +1,10 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
+import type { Account } from '../../types';
 import { condenseAddress } from '../../utils/address';
 import { useAccounts } from '../hooks/useAccounts';
-import { rpc } from '../rpc';
-
-export type Network = 'bitcoin' | 'ordinals';
-
-export interface Account {
-    network: Network;
-    publicKey: Uint8Array;
-}
-
-let approveConnection: (accounts: Account[]) => void;
-let denyConnection: () => void;
-rpc.exposeMethod('connect', async () => {
-    return new Promise((resolve) => {
-        approveConnection = (accounts: Account[]) => {
-            resolve(accounts);
-        };
-        denyConnection = () => {
-            resolve(null);
-        };
-    });
-});
+import { approveConnection, rejectConnection } from '../wallet';
 
 export const ApproveConnection: FC = () => {
     const accounts = useAccounts();
@@ -35,13 +16,9 @@ export const ApproveConnection: FC = () => {
 
     const handleAccountSelected = (address: string, selected: boolean) => {
         if (selected) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const account = accounts.find((account) => account.address === address)!;
             setSelectedAccounts((prevSelectedAccounts) => {
-                prevSelectedAccounts.set(address, {
-                    network: account.network,
-                    publicKey: account.publicKey,
-                });
+                prevSelectedAccounts.set(address, account);
                 return new Map(prevSelectedAccounts.entries());
             });
         } else {
@@ -74,8 +51,8 @@ export const ApproveConnection: FC = () => {
                 ))}
             </ul>
             <div>
-                <button type="button" onClick={denyConnection}>
-                    Deny
+                <button type="button" onClick={rejectConnection}>
+                    Reject
                 </button>
                 <button
                     type="button"

@@ -1,7 +1,7 @@
 import jayson from 'jayson';
 
 import { parse, stringify } from './serialization';
-import type { Transport } from './transport';
+import { createPortTransport, createWindowTransport, type Transport } from './transport';
 
 type Callback = (...args: any[]) => void;
 
@@ -87,4 +87,14 @@ export function createRPC(transport: Transport): RPC {
     }
 
     return { callMethod, exposeMethod, end };
+}
+
+export function createPortRPC(port: chrome.runtime.Port) {
+    const transport = createPortTransport(port);
+    return createRPC(transport);
+}
+
+export function createWindowRPC(window: Window) {
+    const transport = createWindowTransport(window);
+    return createRPC(transport);
 }

@@ -4,7 +4,7 @@ import type {
     SignTransactionResponse,
 } from 'sats-connect';
 
-import type { RPC } from '../messages';
+import type { RPC } from '../rpc';
 
 export class BitcoinProvider implements SatsConnectBitcoinProvider {
     #rpc: RPC;
