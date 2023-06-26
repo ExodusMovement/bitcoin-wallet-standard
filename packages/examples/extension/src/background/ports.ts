@@ -1,3 +1,4 @@
+import { ACCOUNTS_REQUEST_ROUTE_NAME } from '../constants';
 import type { RPC } from '../rpc';
 import { createPortRPC } from '../rpc';
 import { asyncState } from '../utils/asyncState';
@@ -28,7 +29,7 @@ export function connectContent(port: chrome.runtime.Port) {
     const rpc = createPortRPC(port);
 
     rpc.exposeMethod('connect', async () => {
-        const { closePopup, popupClosed } = await openPopup();
+        const { closePopup, popupClosed } = await openPopup({ routeName: ACCOUNTS_REQUEST_ROUTE_NAME });
 
         const popupRPC = await asyncPopupRPC.get();
         const accounts = popupRPC.callMethod('requestAccounts');

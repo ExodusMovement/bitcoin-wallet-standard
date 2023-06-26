@@ -1,3 +1,5 @@
+import type { RouteName } from '../types';
+
 const POPUP_WIDTH = 320;
 const POPUP_HEIGHT = 560;
 
@@ -18,11 +20,13 @@ async function getPopupPosition() {
     return { left, top };
 }
 
-async function createPopup(): Promise<chrome.windows.Window> {
+async function createPopup({ routeName }: { routeName?: RouteName }): Promise<chrome.windows.Window> {
     const { left, top } = await getPopupPosition();
     const popupURL = new URL('../ui/popup.html', import.meta.url);
-    // TODO: Pass as a parameter to `createPopup`.
-    popupURL.searchParams.append('accountsRequest', 'true');
+    if (routeName) {
+        popupURL.searchParams.append('route', routeName);
+    }
+
     return chrome.windows.create({
         url: popupURL.href,
         type: 'popup',
@@ -33,8 +37,8 @@ async function createPopup(): Promise<chrome.windows.Window> {
     });
 }
 
-export async function openPopup() {
-    const popup = await createPopup();
+export async function openPopup({ routeName }: { routeName?: RouteName } = {}) {
+    const popup = await createPopup({ routeName });
 
     let isOpen = true;
 
