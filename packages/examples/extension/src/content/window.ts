@@ -6,3 +6,8 @@ import { BitcoinProvider } from './provider';
 const rpc = createWindowRPC(window);
 const provider = new BitcoinProvider(rpc);
 initialize(provider);
+
+// Temporary to allow debugging in the browser.
+Object.defineProperty(window, 'BitcoinProvider', {
+    value: provider,
+});
