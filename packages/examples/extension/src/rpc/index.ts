@@ -8,7 +8,7 @@ type Callback = (...args: any[]) => void;
 type MethodCallback = (params: any[]) => Promise<any>;
 
 export interface RPC {
-    callMethod: (method: string, params?: any[]) => Promise<any>;
+    callMethod: <Response>(method: string, params?: any[]) => Promise<Response>;
     exposeMethod: (method: string, listener: MethodCallback) => void;
     end: () => void;
 }
@@ -16,7 +16,7 @@ export interface RPC {
 export function createRPC(transport: Transport): RPC {
     const listeners: Callback[] = [];
 
-    function callMethod(method: string, params: any[] = []) {
+    function callMethod<Response>(method: string, params: any[] = []): Promise<Response> {
         return new Promise((resolve) => {
             const request = jayson.Utils.request(method, params);
 
