@@ -14,27 +14,18 @@ export class BitcoinProvider implements SatsConnectBitcoinProvider {
     }
 
     async connect(request: string): Promise<GetAddressResponse> {
-        /** TODO: Implement. */
-        return {
-            addresses: [],
-        };
-    }
-
-    async call(request: string): Promise<Record<string, any>> {
-        /** TODO: Implement. */
-        return {};
+        return this.#rpc.callMethod('connect', [request]);
     }
 
     async signTransaction(request: string): Promise<SignTransactionResponse> {
-        /** TODO: Implement. */
-        return {
-            psbtBase64: '',
-            txId: '',
-        };
+        return this.#rpc.callMethod('signTransaction', [request]);
     }
 
     async signMessage(request: string): Promise<string> {
-        /** TODO: Implement. */
-        return '';
+        return this.#rpc.callMethod('signMessage', [request]);
+    }
+
+    async call(request: string): Promise<Record<string, any>> {
+        throw new Error('Method not implemented.');
     }
 }
