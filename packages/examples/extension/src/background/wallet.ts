@@ -29,8 +29,8 @@ function deriveBitcoinKeypair(mnemonic: string, index = 0): Keypair {
     const root = bip32.fromSeed(seed);
     const child = root.derivePath(`m/${SEGWIT_PURPOSE}'/${COIN_TYPE}'/0'/0/${index}`);
     return {
-        publicKey: child.publicKey,
-        privateKey: child.privateKey!,
+        publicKey: new Uint8Array(child.publicKey),
+        privateKey: new Uint8Array(child.privateKey!),
     };
 }
 
@@ -39,8 +39,8 @@ function deriveOrdinalsKeypair(mnemonic: string, index = 0): Keypair {
     const root = bip32.fromSeed(seed);
     const child = root.derivePath(`m/${TAPROOT_PURPOSE}'/${COIN_TYPE}'/0'/0/${index}`);
     return {
-        publicKey: child.publicKey,
-        privateKey: child.privateKey!,
+        publicKey: new Uint8Array(child.publicKey),
+        privateKey: new Uint8Array(child.privateKey!),
     };
 }
 
