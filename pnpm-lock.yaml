@@ -108,6 +108,7 @@ importers:
       '@bitcoinerlab/secp256k1': ^1.0.2
       '@exodus/bitcoin-wallet-standard-sats': workspace:^
       '@parcel/config-webextension': ^2.9.2
+      '@scure/base': ^1.1.1
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.6
       bip32: ^4.0.0
@@ -122,6 +123,7 @@ importers:
     dependencies:
       '@bitcoinerlab/secp256k1': 1.0.2
       '@exodus/bitcoin-wallet-standard-sats': link:../../wallets/sats
+      '@scure/base': 1.1.1
       bip32: 4.0.0
       bip39: 3.1.0
       bitcoinjs-lib: 6.1.3

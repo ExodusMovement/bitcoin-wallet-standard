@@ -1,10 +1,13 @@
+import { hex } from '@scure/base';
 import type {
     BitcoinProvider as SatsConnectBitcoinProvider,
     GetAddressResponse,
     SignTransactionResponse,
 } from 'sats-connect';
+import { AddressPurposes } from 'sats-connect';
 
 import type { RPC } from '../rpc';
+import type { Account } from '../types';
 
 export class BitcoinProvider implements SatsConnectBitcoinProvider {
     #rpc: RPC;
@@ -14,7 +17,17 @@ export class BitcoinProvider implements SatsConnectBitcoinProvider {
     }
 
     async connect(request: string): Promise<GetAddressResponse> {
-        return this.#rpc.callMethod('connect', [request]);
+        // TODO: Parse request string.
+
+        const accounts = await this.#rpc.callMethod<Account[]>('connect');
+
+        return {
+            addresses: accounts.map(({ network, publicKey, address }) => ({
+                address,
+                publicKey: hex.encode(publicKey),
+                purpose: network === 'bitcoin' ? AddressPurposes.PAYMENT : AddressPurposes.ORDINALS,
+            })),
+        };
     }
 
     async signTransaction(request: string): Promise<SignTransactionResponse> {

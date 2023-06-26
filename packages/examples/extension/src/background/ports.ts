@@ -1,5 +1,6 @@
 import { ACCOUNTS_REQUEST_ROUTE_NAME } from '../constants';
 import type { RPC } from '../rpc';
+import type { Account } from '../types';
 import { createPortRPC } from '../rpc';
 import { asyncState } from '../utils/asyncState';
 import { openPopup } from '../utils/popup';
@@ -32,13 +33,26 @@ export function connectContent(port: chrome.runtime.Port) {
         const { closePopup, popupClosed } = await openPopup({ routeName: ACCOUNTS_REQUEST_ROUTE_NAME });
 
         const popupRPC = await asyncPopupRPC.get();
-        const accounts = popupRPC.callMethod('requestAccounts');
+        const accountsPromise = popupRPC.callMethod<Account[]>('requestAccounts');
 
-        const result = await Promise.race([accounts, popupClosed]);
+        const result = await Promise.race([accountsPromise, popupClosed]);
 
         closePopup();
 
-        return result;
+        if (result === null) {
+            // TODO: Allow rpc to handle errors and throw here.
+            // throw new Error('The user rejected the request.');
+            return null;
+        }
+
+        const accounts = result;
+        if (accounts.length === 0) {
+            // TODO: Allow rpc to handle errors and throw here.
+            // throw new Error('The user rejected the request.');
+            return null;
+        }
+
+        return accounts;
     });
 
     port.onDisconnect.addListener(() => {
