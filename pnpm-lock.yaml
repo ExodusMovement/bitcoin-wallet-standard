@@ -188,11 +188,30 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
 
+  packages/wallets/satoshi:
+    dependencies:
+      '@exodus/bitcoin-wallet-standard-chains':
+        specifier: workspace:^
+        version: link:../../core/chains
+      '@exodus/bitcoin-wallet-standard-features':
+        specifier: workspace:^
+        version: link:../../core/features
+      '@wallet-standard/base':
+        specifier: ^1.0.1
+        version: 1.0.1
+      '@wallet-standard/wallet':
+        specifier: ^1.0.1
+        version: 1.0.1
+    devDependencies:
+      shx:
+        specifier: ^0.3.4
+        version: 0.3.4
+
   packages/wallets/sats-connect:
     dependencies:
-      '@exodus/bitcoin-wallet-standard':
+      '@exodus/bitcoin-wallet-standard-chains':
         specifier: workspace:^
-        version: link:../../_/_
+        version: link:../../core/chains
       '@wallet-standard/base':
         specifier: ^1.0.1
         version: 1.0.1

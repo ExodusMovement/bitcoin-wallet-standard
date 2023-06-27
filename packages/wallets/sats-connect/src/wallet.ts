@@ -1,4 +1,4 @@
-import { BITCOIN_CHAINS } from '@exodus/bitcoin-wallet-standard';
+import { BITCOIN_CHAINS } from '@exodus/bitcoin-wallet-standard-chains';
 import type { Wallet } from '@wallet-standard/base';
 import type { BitcoinProvider } from 'sats-connect';
 import { icon } from './icon.js';

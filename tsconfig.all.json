@@ -17,6 +17,9 @@
             "path": "./packages/examples/extension/tsconfig.all.json"
         },
         {
+            "path": "./packages/wallets/satoshi/tsconfig.all.json"
+        },
+        {
             "path": "./packages/wallets/sats-connect/tsconfig.all.json"
         }
     ]

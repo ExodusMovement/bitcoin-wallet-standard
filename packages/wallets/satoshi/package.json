@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@exodus/bitcoin-wallet-standard-sats-connect",
+    "name": "@exodus/bitcoin-wallet-standard-satoshi",
     "version": "0.0.0",
     "author": "Exodus Maintainers <maintainers@exodus.com>",
     "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
@@ -24,9 +24,9 @@
     },
     "dependencies": {
         "@exodus/bitcoin-wallet-standard-chains": "workspace:^",
+        "@exodus/bitcoin-wallet-standard-features": "workspace:^",
         "@wallet-standard/base": "^1.0.1",
-        "@wallet-standard/wallet": "^1.0.1",
-        "sats-connect": "^0.2.0"
+        "@wallet-standard/wallet": "^1.0.1"
     },
     "devDependencies": {
         "shx": "^0.3.4"
