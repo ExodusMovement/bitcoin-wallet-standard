@@ -5,6 +5,9 @@
             "path": "../../core/_/tsconfig.all.json"
         },
         {
+            "path": "../../wallets/satoshi/tsconfig.all.json"
+        },
+        {
             "path": "../../wallets/sats-connect/tsconfig.all.json"
         },
         {

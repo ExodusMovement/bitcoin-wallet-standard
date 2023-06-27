@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@bitcoinerlab/secp256k1": "^1.0.2",
+        "@exodus/bitcoin-wallet-standard-satoshi": "workspace:^",
         "@exodus/bitcoin-wallet-standard-sats-connect": "workspace:^",
         "@olistic/jsontokens": "^4.0.2",
         "@scure/base": "^1.1.1",

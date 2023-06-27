@@ -144,6 +144,9 @@ importers:
       '@bitcoinerlab/secp256k1':
         specifier: ^1.0.2
         version: 1.0.2
+      '@exodus/bitcoin-wallet-standard-satoshi':
+        specifier: workspace:^
+        version: link:../../wallets/satoshi
       '@exodus/bitcoin-wallet-standard-sats-connect':
         specifier: workspace:^
         version: link:../../wallets/sats-connect
