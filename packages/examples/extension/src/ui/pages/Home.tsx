@@ -13,10 +13,21 @@ export const Home: FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 minHeight: '100vh',
-                padding: '16px',
             }}
         >
-            <h1 style={{ fontSize: '20px', fontWeight: 600, lineHeight: 2 }}>Accounts:</h1>
+            <h1
+                style={{
+                    borderBottom: '2px solid #131313',
+                    fontSize: '15px',
+                    fontWeight: 500,
+                    letterSpacing: '0.3px',
+                    lineHeight: 1,
+                    padding: '8px',
+                    textTransform: 'uppercase',
+                }}
+            >
+                Accounts
+            </h1>
             <AccountsList accounts={accounts} />
         </div>
     );

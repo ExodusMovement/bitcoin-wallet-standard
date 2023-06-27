@@ -2,8 +2,9 @@
 
 html,
 body {
-    background-color: #303030;
-    color: #ffffff;
+    background-color: #fefefe;
+    color: #131313;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
