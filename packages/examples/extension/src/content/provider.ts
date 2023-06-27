@@ -22,10 +22,10 @@ export class BitcoinProvider implements SatsConnectBitcoinProvider {
         const accounts = await this.#rpc.callMethod<Account[]>('connect');
 
         return {
-            addresses: accounts.map(({ network, publicKey, address }) => ({
+            addresses: accounts.map(({ purpose, publicKey, address }) => ({
                 address,
                 publicKey: hex.encode(publicKey),
-                purpose: network === 'bitcoin' ? AddressPurposes.PAYMENT : AddressPurposes.ORDINALS,
+                purpose: purpose === 'payment' ? AddressPurposes.PAYMENT : AddressPurposes.ORDINALS,
             })),
         };
     }

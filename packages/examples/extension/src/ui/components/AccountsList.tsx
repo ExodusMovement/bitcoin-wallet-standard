@@ -2,9 +2,8 @@ import type { FC } from 'react';
 import React from 'react';
 
 import type { Account } from '../../types';
-import { condenseAddress } from '../../utils/address';
-import { getNetworkName } from '../../utils/network';
-import { NetworkIcon } from './NetworkIcon';
+import { condenseAddress, getAddressName } from '../../utils/address';
+import { AddressIcon } from './AddressIcon';
 
 const AccountListItem: FC<{ account: Account; compact: boolean }> = ({ account, compact }) => (
     <article
@@ -19,10 +18,10 @@ const AccountListItem: FC<{ account: Account; compact: boolean }> = ({ account, 
             }),
         }}
     >
-        <NetworkIcon compact={compact} network={account.network} size={compact ? 16 : 24} />
+        <AddressIcon compact={compact} purpose={account.purpose} size={compact ? 16 : 24} />
         {!compact && (
             <h1 style={{ fontSize: '18px', fontWeight: 600, lineHeight: 1, marginTop: '8px' }}>
-                {getNetworkName(account.network)}
+                {getAddressName(account.purpose)}
             </h1>
         )}
         <p

@@ -24,7 +24,7 @@ export function generateMnemonic(): string {
     return bip39.generateMnemonic();
 }
 
-function deriveBitcoinKeypair(mnemonic: string, index = 0): Keypair {
+function derivePaymentKeypair(mnemonic: string, index = 0): Keypair {
     const seed = bip39.mnemonicToSeedSync(mnemonic);
     const root = bip32.fromSeed(seed);
     const child = root.derivePath(`m/${SEGWIT_PURPOSE}'/${COIN_TYPE}'/0'/0/${index}`);
@@ -58,16 +58,16 @@ export function computeTaprootAddress(publicKey: Uint8Array): string {
  * Returns the list of accounts in the wallet.
  */
 export function getAccounts(mnemonic: string): Account[] {
-    const bitcoinKeypair = deriveBitcoinKeypair(mnemonic);
+    const paymentKeypair = derivePaymentKeypair(mnemonic);
     const ordinalsKeypair = deriveOrdinalsKeypair(mnemonic);
     return [
         {
-            network: 'bitcoin',
-            publicKey: bitcoinKeypair.publicKey,
-            address: computeSegWitAddress(bitcoinKeypair.publicKey),
+            purpose: 'payment',
+            publicKey: paymentKeypair.publicKey,
+            address: computeSegWitAddress(paymentKeypair.publicKey),
         },
         {
-            network: 'ordinals',
+            purpose: 'ordinals',
             publicKey: ordinalsKeypair.publicKey,
             address: computeTaprootAddress(ordinalsKeypair.publicKey),
         },

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { AccountsList } from '../components/AccountsList';
-import { NetworksList } from '../components/NetworksList';
+import { PurposesList } from '../components/PurposesList';
 import { useAccounts } from '../hooks/useAccounts';
 import { approveAccountsRequest, rejectAccountsRequest } from '../wallet';
 
@@ -20,7 +20,7 @@ export const AccountsRequest: FC = () => {
             }}
         >
             <h1 style={{ fontSize: '20px', fontWeight: 600, lineHeight: 2, marginTop: '112px' }}>Accounts Request</h1>
-            <NetworksList networks={['bitcoin', 'ordinals']} style={{ marginBottom: '24px' }} />
+            <PurposesList purposes={['payment', 'ordinals']} style={{ marginBottom: '24px' }} />
             <p style={{ fontSize: '14px', marginBottom: '32px', opacity: 0.9, textAlign: 'center' }}>
                 Address for receiving Ordinals and payments.
             </p>

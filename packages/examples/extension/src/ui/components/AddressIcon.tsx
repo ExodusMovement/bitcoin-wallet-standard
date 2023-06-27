@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import type { Network } from '../../types';
+import type { AddressPurpose } from '../../types';
 
 const BitcoinIcon: FC<{ compact: boolean; size: number }> = ({ compact, size }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,22 +21,22 @@ const BitcoinIcon: FC<{ compact: boolean; size: number }> = ({ compact, size }) 
     </svg>
 );
 
-const OrdinalIcon: FC<{ compact: boolean; size: number }> = ({ size }) => (
+const OrdinalsIcon: FC<{ compact: boolean; size: number }> = ({ size }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="11.25" fill="#303354" stroke="white" strokeWidth="1.5" />
         <circle cx="12" cy="12" r="7" fill="white" />
     </svg>
 );
 
-export const NetworkIcon: FC<{ network: Network; size?: number; compact?: boolean }> = ({
-    network,
+export const AddressIcon: FC<{ purpose: AddressPurpose; size?: number; compact?: boolean }> = ({
+    purpose,
     size = 24,
     compact = false,
 }) => {
-    switch (network) {
-        case 'bitcoin':
+    switch (purpose) {
+        case 'payment':
             return <BitcoinIcon compact={compact} size={size} />;
         case 'ordinals':
-            return <OrdinalIcon compact={compact} size={size} />;
+            return <OrdinalsIcon compact={compact} size={size} />;
     }
 };
