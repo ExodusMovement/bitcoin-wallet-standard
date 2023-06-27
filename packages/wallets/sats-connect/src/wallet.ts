@@ -1,7 +1,6 @@
 import { BITCOIN_CHAINS } from '@exodus/bitcoin-wallet-standard';
 import type { Wallet } from '@wallet-standard/base';
 import type { BitcoinProvider } from 'sats-connect';
-import type { SatsConnectWalletAccount } from './account.js';
 import { icon } from './icon.js';
 
 export const SatsConnectNamespace = 'sats-connect:';
@@ -16,7 +15,6 @@ export class SatsConnectWallet implements Wallet {
     readonly #version = '1.0.0' as const;
     readonly #name = 'Sats' as const;
     readonly #icon = icon;
-    #account: SatsConnectWalletAccount | null = null;
     readonly #provider: BitcoinProvider;
 
     get version() {
@@ -44,7 +42,7 @@ export class SatsConnectWallet implements Wallet {
     }
 
     get accounts() {
-        return this.#account ? [this.#account] : [];
+        return [];
     }
 
     constructor(provider: BitcoinProvider) {
