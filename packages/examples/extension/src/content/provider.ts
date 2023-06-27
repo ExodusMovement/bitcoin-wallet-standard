@@ -1,3 +1,4 @@
+import { decodeToken } from '@olistic/jsontokens';
 import { hex } from '@scure/base';
 import type {
     BitcoinProvider as SatsConnectBitcoinProvider,
@@ -17,9 +18,20 @@ export class BitcoinProvider implements SatsConnectBitcoinProvider {
     }
 
     async connect(request: string): Promise<GetAddressResponse> {
-        // TODO: Parse request string.
+        if (!request) {
+            throw new Error('Invalid request.');
+        }
 
-        const accounts = await this.#rpc.callMethod<Account[]>('connect');
+        const { payload } = decodeToken(request);
+        if (typeof payload === 'string') {
+            throw new Error('Invalid request.');
+        }
+
+        const { purposes } = payload as {
+            purposes?: AddressPurposes[];
+        };
+
+        const accounts = await this.#rpc.callMethod<Account[]>('connect', [purposes]);
 
         return {
             addresses: accounts.map(({ purpose, publicKey, address }) => ({

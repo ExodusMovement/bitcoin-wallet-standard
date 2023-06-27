@@ -147,6 +147,9 @@ importers:
       '@exodus/bitcoin-wallet-standard-sats-connect':
         specifier: workspace:^
         version: link:../../wallets/sats-connect
+      '@olistic/jsontokens':
+        specifier: ^4.0.2
+        version: 4.0.2
       '@scure/base':
         specifier: ^1.1.1
         version: 1.1.1
@@ -662,6 +665,14 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@olistic/jsontokens@4.0.2:
+    resolution: {integrity: sha512-0ccjk3Nv7hZfAaYQZk366ONvZesqLyQZLT47wOBeJxSUvjHeXnOiJ+bJdUGTAbhHA/AxCUpOF5ymbKR0enDAOQ==}
+    dependencies:
+      '@noble/hashes': 1.3.1
+      '@noble/secp256k1': 1.7.1
+      base64-js: 1.5.1
+    dev: false
 
   /@parcel/bundler-default@2.9.2(@parcel/core@2.9.2):
     resolution: {integrity: sha512-tmhyeNQYJla9509Sq/U12j2fZg0hDojyIyM4wuVWKhkAnDnZjbMKj3m11S1COR5i2aqx9lJjTWj0XPJl5lrcvg==}
