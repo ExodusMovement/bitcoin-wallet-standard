@@ -13,7 +13,7 @@ export type SatsConnectFeature = {
 
 export class SatsConnectWallet implements Wallet {
     readonly #version = '1.0.0' as const;
-    readonly #name = 'Sats' as const;
+    readonly #name = 'Sats Connect' as const;
     readonly #icon = icon;
     readonly #provider: BitcoinProvider;
 
