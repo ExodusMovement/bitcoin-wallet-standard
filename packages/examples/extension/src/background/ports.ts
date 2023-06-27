@@ -42,14 +42,14 @@ export function connectContent(port: chrome.runtime.Port) {
         if (result === null) {
             // TODO: Allow rpc to handle errors and throw here.
             // throw new Error('The user rejected the request.');
-            return null;
+            return [];
         }
 
         const accounts = result;
         if (accounts.length === 0) {
             // TODO: Allow rpc to handle errors and throw here.
             // throw new Error('The user rejected the request.');
-            return null;
+            return [];
         }
 
         return accounts;
