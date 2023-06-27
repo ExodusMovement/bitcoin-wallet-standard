@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Sats Wallet",
-    "description": "A Bitcoin & Ordinals wallet",
+    "name": "Bitcoin Standard Wallet",
+    "description": "A Bitcoin & Ordinals standard wallet",
     "version": "0.0.0",
     "action": {
         "default_popup": "ui/popup.html"

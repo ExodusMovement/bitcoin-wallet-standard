@@ -1,4 +1,4 @@
-import { initialize } from '@exodus/bitcoin-wallet-standard-sats';
+import { initialize } from '@exodus/bitcoin-wallet-standard-sats-connect';
 
 import { createWindowRPC } from '../rpc';
 import { BitcoinProvider } from './provider';

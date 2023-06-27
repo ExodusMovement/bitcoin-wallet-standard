@@ -5,7 +5,7 @@
             "path": "../../core/_/tsconfig.all.json"
         },
         {
-            "path": "../../wallets/sats/tsconfig.all.json"
+            "path": "../../wallets/sats-connect/tsconfig.all.json"
         },
         {
             "path": "./tsconfig.base.json"

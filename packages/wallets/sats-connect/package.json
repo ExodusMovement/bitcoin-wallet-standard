@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@exodus/bitcoin-wallet-standard-sats",
+    "name": "@exodus/bitcoin-wallet-standard-sats-connect",
     "version": "0.0.0",
     "author": "Exodus Maintainers <maintainers@exodus.com>",
     "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
