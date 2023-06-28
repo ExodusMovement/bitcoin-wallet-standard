@@ -139,6 +139,34 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
 
+  packages/examples/dapp:
+    dependencies:
+      '@wallet-standard/react':
+        specifier: ^0.1.4
+        version: 0.1.4(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.4.2
+        version: 6.4.2(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: ^18.0.21
+        version: 18.2.14
+      '@types/react-dom':
+        specifier: ^18.0.6
+        version: 18.2.6
+      parcel:
+        specifier: ^2.8.1
+        version: 2.9.2
+      shx:
+        specifier: ^0.3.4
+        version: 0.3.4
+
   packages/examples/extension:
     dependencies:
       '@bitcoinerlab/secp256k1':
@@ -1421,6 +1449,11 @@ packages:
       nullthrows: 1.1.1
     dev: true
 
+  /@remix-run/router@1.0.2:
+    resolution: {integrity: sha512-GRSOFhJzjGN+d4sKHTMSvNeUPoZiDHWmRnXfzaxrqe7dE/Nzlc8BiMSJdLDESZlndM7jIUrZ/F4yWqVYlI0rwQ==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@scure/base@1.1.1:
     resolution: {integrity: sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==}
     dev: false
@@ -1765,9 +1798,23 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
+  /@wallet-standard/app@1.0.1:
+    resolution: {integrity: sha512-LnLYq2Vy2guTZ8GQKKSXQK3+FRGPil75XEdkZqE6fiLixJhZJoJa5hT7lXxwe0ykVTt9LEThdTbOpT7KadS26Q==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
+    dev: false
+
   /@wallet-standard/base@1.0.1:
     resolution: {integrity: sha512-1To3ekMfzhYxe0Yhkpri+Fedq0SYcfrOfJi3vbLjMwF2qiKPjTGLwZkf2C9ftdQmxES+hmxhBzTwF4KgcOwf8w==}
     engines: {node: '>=16'}
+    dev: false
+
+  /@wallet-standard/experimental-features@0.1.1:
+    resolution: {integrity: sha512-WKtnET1okeDACTbxmePGOGaIUrGvlu/DestLZvZ/ddFpUKw7nokkbinX/gHzsuAC9WGtLyhqLSppAHzN+vAAaQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/base': 1.0.1
     dev: false
 
   /@wallet-standard/features@1.0.3:
@@ -1775,6 +1822,31 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@wallet-standard/base': 1.0.1
+    dev: false
+
+  /@wallet-standard/react-core@0.1.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RZNx0NDs/iTINAKZ9W1K0XY0UScH70QRxbkG6a4OZAN6Ry8R+ZzZUfNYau65Re1X3MRVL6Uy64EfQbUlZthTiA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      '@wallet-standard/app': 1.0.1
+      '@wallet-standard/base': 1.0.1
+      '@wallet-standard/experimental-features': 0.1.1
+      '@wallet-standard/features': 1.0.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@wallet-standard/react@0.1.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LEI/qF6+P4YqyeGOyxzMhbFpIo7JcQ3tEZUOIKoBfvkZpDN2n/Ww60KjCGUMhXhnrEDLMpyfrKYJJ0qLacENQw==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@wallet-standard/react-core': 0.1.4(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - react
+      - react-dom
     dev: false
 
   /@wallet-standard/wallet@1.0.1:
@@ -4219,6 +4291,29 @@ packages:
     resolution: {integrity: sha512-Gvzk7OZpiqKSkxsQvO/mbTN1poglhmAV7gR/DdIrRrSMXraRQQlfikRJOr3Nb9GTMPC5kof948Zy6jJZIFtDvQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-router-dom@6.4.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yM1kjoTkpfjgczPrcyWrp+OuQMyB1WleICiiGfstnQYo/S8hPEEnVjr/RdmlH6yKK4Tnj1UGXFSa7uwAtmDoLQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.0.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.4.2(react@18.2.0)
+    dev: false
+
+  /react-router@6.4.2(react@18.2.0):
+    resolution: {integrity: sha512-Rb0BAX9KHhVzT1OKhMvCDMw776aTYM0DtkxqUBP8dNBom3mPXlfNs76JNGK8wKJ1IZEY1+WGj+cvZxHVk/GiKw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.0.2
+      react: 18.2.0
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

@@ -14,6 +14,9 @@
             "path": "./packages/core/features/tsconfig.all.json"
         },
         {
+            "path": "./packages/examples/dapp/tsconfig.all.json"
+        },
+        {
             "path": "./packages/examples/extension/tsconfig.all.json"
         },
         {
