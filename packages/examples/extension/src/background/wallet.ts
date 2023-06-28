@@ -24,6 +24,13 @@ export function generateMnemonic(): string {
     return bip39.generateMnemonic();
 }
 
+/**
+ * Extracts the x-coordinate of the given public key, used for Taproot.
+ */
+function toXOnly(publicKey: Uint8Array): Uint8Array {
+    return publicKey.subarray(1, 33);
+}
+
 function derivePaymentKeypair(mnemonic: string, index = 0): Keypair {
     const seed = bip39.mnemonicToSeedSync(mnemonic);
     const root = bip32.fromSeed(seed);
@@ -50,7 +57,7 @@ export function computeSegWitAddress(publicKey: Uint8Array): string {
 
 export function computeTaprootAddress(publicKey: Uint8Array): string {
     return bitcoin.payments.p2tr({
-        internalPubkey: Buffer.from(publicKey).subarray(1, 33),
+        internalPubkey: Buffer.from(toXOnly(publicKey)),
     }).address!;
 }
 
