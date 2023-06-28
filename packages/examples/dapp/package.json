@@ -11,6 +11,8 @@
         "build": "parcel build"
     },
     "dependencies": {
+        "@exodus/bitcoin-wallet-standard-features": "workspace:^",
+        "@exodus/bitcoin-wallet-standard-react": "workspace:^",
         "@wallet-standard/react": "^0.1.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

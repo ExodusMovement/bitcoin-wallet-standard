@@ -1,3 +1,5 @@
+import type { BitcoinAddressPurpose } from '@exodus/bitcoin-wallet-standard-features';
+import { useBitcoinConnect } from '@exodus/bitcoin-wallet-standard-react';
 import { useWallet, useWallets } from '@wallet-standard/react';
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
@@ -5,24 +7,27 @@ import { Link, Navigate } from 'react-router-dom';
 
 import { useIsConnected } from '../hooks/useIsConnected';
 
+const purposes: BitcoinAddressPurpose[] = ['payment', 'ordinals'];
+
 export const Connect: FC = () => {
     const { wallets } = useWallets();
     const { setWallet, wallet } = useWallet();
     const isConnected = useIsConnected();
+    const { connect } = useBitcoinConnect();
 
     useEffect(() => {
         async function connectOrDeselect() {
             try {
-                // TODO: Connect.
+                await connect!({ purposes });
             } catch (err) {
                 setWallet(null);
             }
         }
 
-        if (wallet && !isConnected) {
+        if (wallet && !isConnected && connect) {
             connectOrDeselect();
         }
-    }, [wallet, isConnected, setWallet]);
+    }, [wallet, isConnected, connect, setWallet]);
 
     if (isConnected) {
         return <Navigate to="/" replace={true} />;

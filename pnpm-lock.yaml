@@ -141,6 +141,12 @@ importers:
 
   packages/examples/dapp:
     dependencies:
+      '@exodus/bitcoin-wallet-standard-features':
+        specifier: workspace:^
+        version: link:../../core/features
+      '@exodus/bitcoin-wallet-standard-react':
+        specifier: workspace:^
+        version: link:../../react/_
       '@wallet-standard/react':
         specifier: ^0.1.4
         version: 0.1.4(react-dom@18.2.0)(react@18.2.0)
