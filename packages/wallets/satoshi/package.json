@@ -26,6 +26,7 @@
         "@exodus/bitcoin-wallet-standard-chains": "workspace:^",
         "@exodus/bitcoin-wallet-standard-features": "workspace:^",
         "@wallet-standard/base": "^1.0.1",
+        "@wallet-standard/features": "^1.0.1",
         "@wallet-standard/wallet": "^1.0.1"
     },
     "devDependencies": {
