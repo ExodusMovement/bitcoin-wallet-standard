@@ -5,7 +5,12 @@ import type { Account } from '../../types';
 import { condenseAddress, getAddressName } from '../../utils/address';
 import { AddressIcon } from './AddressIcon';
 
-const AccountListItem: FC<{ account: Account; compact: boolean; last: boolean }> = ({ account, compact, last }) => (
+const AccountListItem: FC<{ account: Account; compact: boolean; copyable: boolean; last: boolean }> = ({
+    account,
+    compact,
+    copyable,
+    last,
+}) => (
     <article
         style={{
             display: 'flex',
@@ -19,7 +24,7 @@ const AccountListItem: FC<{ account: Account; compact: boolean; last: boolean }>
             }),
         }}
     >
-        <AddressIcon compact={compact} purpose={account.purpose} size={compact ? 16 : 24} />
+        <AddressIcon purpose={account.purpose} size={compact ? 16 : 24} />
         {!compact && (
             <h1
                 style={{
@@ -36,10 +41,11 @@ const AccountListItem: FC<{ account: Account; compact: boolean; last: boolean }>
         )}
         <p
             onClick={() => {
-                navigator.clipboard.writeText(account.address);
+                if (copyable) {
+                    navigator.clipboard.writeText(account.address);
+                }
             }}
             style={{
-                cursor: 'pointer',
                 fontFamily: '"Roboto Mono", monospace',
                 fontSize: '13px',
                 lineHeight: 1,
@@ -51,6 +57,7 @@ const AccountListItem: FC<{ account: Account; compact: boolean; last: boolean }>
                           color: '#757575',
                           marginTop: '4px',
                       }),
+                ...(copyable && { cursor: 'pointer' }),
             }}
         >
             {condenseAddress(account.address)}
@@ -66,7 +73,12 @@ export const AccountsList: FC<{ accounts: Account[]; compact?: boolean; style?: 
     <ul style={{ display: 'flex', flexDirection: 'column', margin: 0, padding: 0, width: '100%', ...style }}>
         {accounts.map((account, index) => (
             <li key={account.address} style={{ listStyle: 'none' }}>
-                <AccountListItem account={account} compact={compact} last={index === accounts.length - 1} />
+                <AccountListItem
+                    account={account}
+                    compact={compact}
+                    copyable={!compact}
+                    last={index === accounts.length - 1}
+                />
             </li>
         ))}
     </ul>

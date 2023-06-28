@@ -16,11 +16,11 @@ const PurposeListItem: FC<{ purpose: AddressPurpose; last: boolean }> = ({ purpo
             }),
         }}
     >
-        <AddressIcon compact purpose={purpose} size={12} />
+        <AddressIcon purpose={purpose} size={8} />
         <h1
             style={{
-                fontSize: '11px',
-                fontWeight: 400,
+                fontSize: '10px',
+                fontWeight: 500,
                 letterSpacing: '0.5px',
                 lineHeight: 1,
                 marginLeft: '4px',
