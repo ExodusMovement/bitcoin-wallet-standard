@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import React from 'react';
 
+import { approveAccountsRequest, rejectAccountsRequest } from '../api/wallet';
 import { AccountsList } from '../components/AccountsList';
 import { Button } from '../components/Button';
 import { PurposesList } from '../components/PurposesList';
 import { useAccounts } from '../hooks/useAccounts';
-import { approveAccountsRequest, rejectAccountsRequest } from '../wallet';
 
 export const AccountsRequest: FC = () => {
     const accounts = useAccounts();

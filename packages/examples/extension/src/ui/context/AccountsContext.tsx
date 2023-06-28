@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from 'react';
 import React, { useEffect, useState } from 'react';
 
-import type { Account } from '../../types';
-import { getAccounts } from '../wallet';
+import type { Account } from '../../wallet';
+import { getAccounts } from '../api/wallet';
 
 export const AccountsContext = React.createContext([] as Account[]);
 

@@ -1,6 +1,6 @@
 import { POPUP_PORT_NAME } from '../../constants';
 import { createPortRPC } from '../../rpc';
-import type { Account } from '../../types';
+import type { Account } from '../../wallet';
 
 const port = chrome.runtime.connect({ name: POPUP_PORT_NAME });
 const rpc = createPortRPC(port);

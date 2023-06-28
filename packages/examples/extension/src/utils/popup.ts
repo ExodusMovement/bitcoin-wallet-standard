@@ -1,4 +1,4 @@
-import type { RouteName } from '../types';
+import type { ROUTE_NAMES } from '../constants';
 
 const POPUP_WIDTH = 320;
 const POPUP_HEIGHT = 560;
@@ -19,6 +19,8 @@ async function getPopupPosition() {
 
     return { left, top };
 }
+
+type RouteName = (typeof ROUTE_NAMES)[number];
 
 async function createPopup({ routeName }: { routeName?: RouteName }): Promise<chrome.windows.Window> {
     const { left, top } = await getPopupPosition();

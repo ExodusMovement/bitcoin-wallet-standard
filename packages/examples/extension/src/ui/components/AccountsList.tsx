@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import type { Account } from '../../types';
 import { condenseAddress, getAddressName } from '../../utils/address';
+import type { Account } from '../../wallet';
 import { AddressIcon } from './AddressIcon';
 
 const AccountListItem: FC<{ account: Account; compact: boolean; copyable: boolean; last: boolean }> = ({

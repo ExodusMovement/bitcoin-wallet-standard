@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import type { AddressPurpose } from '../../types';
 import { getAddressName } from '../../utils/address';
+import type { AddressPurpose } from '../../wallet';
 import { AddressIcon } from './AddressIcon';
 
 const PurposeListItem: FC<{ purpose: AddressPurpose; last: boolean }> = ({ purpose, last }) => (

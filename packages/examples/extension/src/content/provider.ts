@@ -8,7 +8,7 @@ import type {
 import { AddressPurposes } from 'sats-connect';
 
 import type { RPC } from '../rpc';
-import type { Account } from '../types';
+import type { Account } from '../wallet';
 
 export class BitcoinProvider implements SatsConnectBitcoinProvider {
     #rpc: RPC;

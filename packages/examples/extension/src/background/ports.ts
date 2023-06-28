@@ -1,11 +1,11 @@
 import { ACCOUNTS_REQUEST_ROUTE_NAME } from '../constants';
 import type { RPC } from '../rpc';
-import type { Account } from '../types';
 import { createPortRPC } from '../rpc';
 import { asyncState } from '../utils/asyncState';
 import { openPopup } from '../utils/popup';
 import { getMnemonic } from './storage';
-import { getAccounts } from './wallet';
+import type { Account } from '../wallet';
+import { getAccounts } from '../wallet';
 
 // Allows content to communicate with popup via the background process.
 const asyncPopupRPC = asyncState<RPC>();
