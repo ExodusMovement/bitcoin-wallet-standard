@@ -1,6 +1,7 @@
 import type { BitcoinAddressPurpose } from '@exodus/bitcoin-wallet-standard-features';
 import { useBitcoinConnect } from '@exodus/bitcoin-wallet-standard-react';
 import { useWallet, useWallets } from '@wallet-standard/react';
+import classNames from 'classnames';
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
@@ -34,19 +35,29 @@ export const Connect: FC = () => {
     }
 
     return (
-        <div>
-            <h1>Connect Wallet</h1>
-            <Link to="/">Back</Link>
-            <ul>
+        <div className="flex min-h-screen flex-col items-center justify-center">
+            <h1 className="mb-4 text-lg font-medium uppercase tracking-wide">Connect Wallet</h1>
+            <ul className="mb-8 flex flex-col">
                 {wallets.map((wallet, index) => (
-                    <li key={index}>
-                        {wallet.name}
-                        <button type="button" onClick={() => setWallet(wallet)}>
-                            Select
+                    <li key={wallet.name}>
+                        <button
+                            className={classNames(
+                                'w-full rounded-md border border-solid border-neutral-950 px-2 py-1 text-xs uppercase tracking-wide',
+                                {
+                                    'mb-2': index !== wallets.length - 1,
+                                }
+                            )}
+                            type="button"
+                            onClick={() => setWallet(wallet)}
+                        >
+                            {wallet.name}
                         </button>
                     </li>
                 ))}
             </ul>
+            <Link className="text-sm underline" to="/">
+                Back
+            </Link>
         </div>
     );
 };

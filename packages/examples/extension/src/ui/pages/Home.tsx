@@ -8,27 +8,11 @@ export const Home: FC = () => {
     const accounts = useAccounts();
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-            }}
-        >
-            <h1
-                style={{
-                    borderBottom: '2px solid #131313',
-                    fontSize: '15px',
-                    fontWeight: 500,
-                    letterSpacing: '0.3px',
-                    lineHeight: 1,
-                    padding: '8px',
-                    textTransform: 'uppercase',
-                }}
-            >
+        <div className="flex min-h-screen flex-col">
+            <h1 className="border-b-2 border-solid border-neutral-950 p-2 text-sm font-medium uppercase tracking-wide">
                 Accounts
             </h1>
-            <AccountsList accounts={accounts} />
+            <AccountsList accounts={accounts} className="border-b-2 border-solid border-neutral-950" />
         </div>
     );
 };

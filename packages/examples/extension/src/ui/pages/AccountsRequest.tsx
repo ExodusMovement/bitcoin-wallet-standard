@@ -11,34 +11,18 @@ export const AccountsRequest: FC = () => {
     const accounts = useAccounts();
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: '100vh',
-            }}
-        >
-            <div style={{ borderBottom: '2px solid #131313', height: '200px' }}></div>
-            <h1
-                style={{
-                    borderBottom: '2px solid #131313',
-                    fontSize: '15px',
-                    fontWeight: 500,
-                    letterSpacing: '0.3px',
-                    lineHeight: 1,
-                    padding: '8px',
-                    textTransform: 'uppercase',
-                }}
-            >
+        <div className="flex min-h-screen flex-col">
+            <div className="h-48 border-b-2 border-solid border-neutral-950"></div>
+            <h1 className="border-b-2 border-solid border-neutral-950 p-2 text-sm font-medium uppercase tracking-wide">
                 Accounts Request
             </h1>
-            <PurposesList purposes={['payment', 'ordinals']} style={{ borderBottom: '2px solid #131313' }} />
-            <p style={{ borderBottom: '2px solid #131313', fontSize: '13px', padding: '8px' }}>
+            <PurposesList purposes={['payment', 'ordinals']} className="border-b-2 border-solid border-neutral-950" />
+            <p className="border-b-2 border-solid border-neutral-950 p-2 text-xs">
                 Address for receiving Ordinals and payments.
             </p>
-            <AccountsList accounts={accounts} compact style={{ borderBottom: '2px solid #131313' }} />
-            <div style={{ borderBottom: '2px solid #131313', flex: 1 }}></div>
-            <div style={{ display: 'flex', justifyContent: 'space-evenly', padding: '8px' }}>
+            <AccountsList accounts={accounts} className="border-b-2 border-solid border-neutral-950" compact />
+            <div className="flex-1 border-b-2 border-solid border-neutral-950"></div>
+            <div className="flex justify-evenly p-2">
                 <Button onClick={rejectAccountsRequest}>Reject</Button>
                 <Button onClick={() => approveAccountsRequest(accounts)}>Approve</Button>
             </div>

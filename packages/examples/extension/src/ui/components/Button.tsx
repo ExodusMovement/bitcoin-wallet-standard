@@ -3,18 +3,9 @@ import React from 'react';
 
 export const Button: FC<{ children: NonNullable<ReactNode>; onClick: () => void }> = ({ children, onClick }) => (
     <button
+        className="cursor-pointer rounded-md border border-solid border-transparent bg-none px-2 py-1 text-xs uppercase tracking-wide hover:border-neutral-950"
         onClick={onClick}
         type="button"
-        style={{
-            background: 'none',
-            border: '1px solid #131313',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            fontSize: '11px',
-            letterSpacing: '0.3px',
-            padding: '4px 8px',
-            textTransform: 'uppercase',
-        }}
     >
         {children}
     </button>

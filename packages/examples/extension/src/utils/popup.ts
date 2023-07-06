@@ -1,7 +1,7 @@
 import type { ROUTE_NAMES } from '../constants';
 
 const POPUP_WIDTH = 320;
-const POPUP_HEIGHT = 560;
+const POPUP_HEIGHT = 512;
 
 async function getPopupPosition() {
     let left = 0;

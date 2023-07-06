@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import type { FC } from 'react';
 import React from 'react';
 
@@ -12,52 +13,29 @@ const AccountListItem: FC<{ account: Account; compact: boolean; copyable: boolea
     last,
 }) => (
     <article
-        style={{
-            display: 'flex',
-            flexDirection: compact ? 'row' : 'column',
-            padding: '8px',
-            ...(compact && {
-                alignItems: 'center',
-            }),
-            ...(!last && {
-                borderBottom: '1px solid #131313',
-            }),
-        }}
+        className={classNames('flex p-2', {
+            'border-b border-solid border-neutral-950': !last,
+            'flex-col': !compact,
+            'flex-row': compact,
+            'items-center': compact,
+            'items-start': !compact,
+        })}
     >
         <AddressIcon purpose={account.purpose} size={compact ? 16 : 24} />
         {!compact && (
-            <h1
-                style={{
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    letterSpacing: '0.5px',
-                    lineHeight: 1,
-                    marginTop: '8px',
-                    textTransform: 'uppercase',
-                }}
-            >
-                {getAddressName(account.purpose)}
-            </h1>
+            <h1 className="mt-2 text-xs font-medium uppercase tracking-wide">{getAddressName(account.purpose)}</h1>
         )}
         <p
+            className={classNames('font-mono text-sm', {
+                'cursor-pointer': copyable,
+                'ml-2': compact,
+                'mt-1': !compact,
+                'text-neutral-500': !compact,
+            })}
             onClick={() => {
                 if (copyable) {
                     navigator.clipboard.writeText(account.address);
                 }
-            }}
-            style={{
-                fontFamily: '"Roboto Mono", monospace',
-                fontSize: '13px',
-                lineHeight: 1,
-                ...(compact
-                    ? {
-                          marginLeft: '8px',
-                      }
-                    : {
-                          color: '#757575',
-                          marginTop: '4px',
-                      }),
-                ...(copyable && { cursor: 'pointer' }),
             }}
         >
             {condenseAddress(account.address)}
@@ -65,14 +43,14 @@ const AccountListItem: FC<{ account: Account; compact: boolean; copyable: boolea
     </article>
 );
 
-export const AccountsList: FC<{ accounts: Account[]; compact?: boolean; style?: React.CSSProperties }> = ({
+export const AccountsList: FC<{ accounts: Account[]; compact?: boolean; className?: string }> = ({
     accounts,
+    className,
     compact = false,
-    style = {},
 }) => (
-    <ul style={{ display: 'flex', flexDirection: 'column', margin: 0, padding: 0, width: '100%', ...style }}>
+    <ul className={classNames('flex w-full flex-col', className)}>
         {accounts.map((account, index) => (
-            <li key={account.address} style={{ listStyle: 'none' }}>
+            <li key={account.address}>
                 <AccountListItem
                     account={account}
                     compact={compact}
