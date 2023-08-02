@@ -1,6 +1,6 @@
 {
     "name": "@exodus/bitcoin-wallet-standard-features",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "Exodus Maintainers <maintainers@exodus.com>",
     "repository": "https://github.com/ExodusMovement/bitcoin-wallet-standard",
     "license": "Apache-2.0",
