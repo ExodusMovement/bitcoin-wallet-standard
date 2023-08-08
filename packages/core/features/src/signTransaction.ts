@@ -44,11 +44,11 @@ export type BitcoinSignTransactionMethod = (
  */
 export interface BitcoinSignTransactionInput {
     /**
-     * Partially signed PSBT.
+     * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
      */
     psbt: Bytes;
     /**
-     * Chain name. Should be one of the {@link "@wallet-standard/base".Wallet.chains}
+     * Chain to use.
      */
     chain: ArrayElement<Wallet['chains']>;
     inputsToSign: readonly InputToSign[];
@@ -63,9 +63,9 @@ type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
  * @group SignTransaction
  * */
 export interface InputToSign {
-    /** Which {@link "@wallet-standard/base".WalletAccount.address } should sign inputs. */
+    /** Address to use. */
     address: WalletAccount['address'];
-    /** A list of input indexes that should be signed by the {@link "@wallet-standard/base".WalletAccount.address}. */
+    /** List of input indexes that should be signed by the address. */
     signingIndexes: number[];
     /** A SIGHASH flag. */
     sigHash?: number;
@@ -78,11 +78,12 @@ export interface InputToSign {
  */
 export interface BitcoinSignTransactionOutput {
     /**
-     * Partially signed PSBT.
+     * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
      */
     psbt: Bytes;
     /**
-     * Transaction hash. Returned if "broadcast: true" was passed in the {@link BitcoinSignTransactionInput}.
+     * Transaction hash.
+     * Returned if `broadcast: true` was passed in the {@link BitcoinSignTransactionInput}.
      */
     txId?: string;
 }
