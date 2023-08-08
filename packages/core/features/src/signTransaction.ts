@@ -1,5 +1,4 @@
 import type { Wallet, WalletAccount } from '@wallet-standard/base';
-import type { Bytes } from './types.js';
 
 /** Name of the feature. */
 export const BitcoinSignTransaction = 'bitcoin:signTransaction';
@@ -46,13 +45,19 @@ export interface BitcoinSignTransactionInput {
     /**
      * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
      */
-    psbt: Bytes;
+    readonly psbt: Uint8Array;
     /**
      * Chain to use.
      */
-    chain: ArrayElement<Wallet['chains']>;
-    inputsToSign: readonly InputToSign[];
-    broadcast?: boolean;
+    readonly chain: ArrayElement<Wallet['chains']>;
+    /**
+     * Transaction inputs to sign.
+     */
+    readonly inputsToSign: InputToSign[];
+    /**
+     * Whether a Wallet should broadcast the signed transaction.
+     */
+    readonly broadcast?: boolean;
 }
 
 /** A helper type to infer an array element type. */
@@ -80,7 +85,7 @@ export interface BitcoinSignTransactionOutput {
     /**
      * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
      */
-    psbt: Bytes;
+    readonly psbt: Uint8Array;
     /**
      * Transaction hash.
      * Returned if `broadcast: true` was passed in the {@link BitcoinSignTransactionInput}.
