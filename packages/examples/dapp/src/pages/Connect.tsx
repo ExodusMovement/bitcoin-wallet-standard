@@ -7,6 +7,13 @@ import React, { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
 import { useIsConnected } from '../hooks/useIsConnected';
+import { BitcoinConnect } from '@exodus/bitcoin-wallet-standard-features';
+
+import type { Wallet } from '@wallet-standard/base';
+
+function hasBitcoinConnectFeature(wallet: Wallet): boolean {
+    return BitcoinConnect in wallet.features;
+}
 
 const purposes: BitcoinAddressPurpose[] = ['payment', 'ordinals'];
 
@@ -38,7 +45,7 @@ export const Connect: FC = () => {
         <div className="flex min-h-screen flex-col items-center justify-center">
             <h1 className="mb-4 text-lg font-medium uppercase tracking-wide">Connect Wallet</h1>
             <ul className="mb-8 flex flex-col">
-                {wallets.map((wallet, index) => (
+                {wallets.filter(hasBitcoinConnectFeature).map((wallet, index) => (
                     <li key={wallet.name}>
                         <button
                             className={classNames(
