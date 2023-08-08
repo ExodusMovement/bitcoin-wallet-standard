@@ -20,6 +20,7 @@
         "react-router-dom": "^6.4.2"
     },
     "devDependencies": {
+        "@wallet-standard/base": "^1.0.1",
         "@types/react": "^18.0.21",
         "@types/react-dom": "^18.0.6",
         "parcel": "^2.8.1",
