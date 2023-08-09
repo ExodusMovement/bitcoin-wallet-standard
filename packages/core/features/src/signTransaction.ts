@@ -55,7 +55,7 @@ export interface BitcoinSignTransactionInput {
      */
     readonly inputsToSign: InputToSign[];
     /**
-     * Whether a Wallet should broadcast the signed transaction.
+     * Whether the wallet should broadcast the signed transaction.
      */
     readonly broadcast?: boolean;
 }
