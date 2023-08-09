@@ -7,8 +7,15 @@ import React, { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 
 import { useIsConnected } from '../hooks/useIsConnected';
+import type { Wallet } from '@wallet-standard/base';
 
 const purposes: BitcoinAddressPurpose[] = ['payment', 'ordinals'];
+
+const SatsConnectNamespace = 'sats-connect:';
+
+function isSatsConnectCompatibleWallet(wallet: Wallet) {
+    return SatsConnectNamespace in wallet.features;
+}
 
 export const Connect: FC = () => {
     const { wallets } = useWallets();
@@ -38,7 +45,7 @@ export const Connect: FC = () => {
         <div className="flex min-h-screen flex-col items-center justify-center">
             <h1 className="mb-4 text-lg font-medium uppercase tracking-wide">Connect Wallet</h1>
             <ul className="mb-8 flex flex-col">
-                {wallets.map((wallet, index) => (
+                {wallets.filter(isSatsConnectCompatibleWallet).map((wallet, index) => (
                     <li key={wallet.name}>
                         <button
                             className={classNames(
