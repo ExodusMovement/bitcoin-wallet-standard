@@ -150,6 +150,12 @@ importers:
       '@exodus/bitcoin-wallet-standard-react':
         specifier: workspace:^
         version: link:../../react/_
+      '@exodus/bitcoin-wallet-standard-sats-connect':
+        specifier: workspace:^
+        version: link:../../wallets/sats-connect
+      '@exodus/sats-connect':
+        specifier: ^1.0.0-exodus.0
+        version: 1.0.0-exodus.0
       '@wallet-standard/react':
         specifier: ^0.1.4
         version: 0.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -172,6 +178,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.6
         version: 18.2.6
+      '@wallet-standard/base':
+        specifier: ^1.0.1
+        version: 1.0.1
       parcel:
         specifier: ^2.9.3
         version: 2.9.3(postcss@8.4.24)
@@ -3125,7 +3134,6 @@ packages:
   /@wallet-standard/base@1.0.1:
     resolution: {integrity: sha512-1To3ekMfzhYxe0Yhkpri+Fedq0SYcfrOfJi3vbLjMwF2qiKPjTGLwZkf2C9ftdQmxES+hmxhBzTwF4KgcOwf8w==}
     engines: {node: '>=16'}
-    dev: false
 
   /@wallet-standard/experimental-features@0.1.1:
     resolution: {integrity: sha512-WKtnET1okeDACTbxmePGOGaIUrGvlu/DestLZvZ/ddFpUKw7nokkbinX/gHzsuAC9WGtLyhqLSppAHzN+vAAaQ==}
