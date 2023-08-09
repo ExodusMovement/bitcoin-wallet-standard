@@ -1,6 +1,6 @@
 import { BITCOIN_CHAINS } from '@exodus/bitcoin-wallet-standard-chains';
 import type { Wallet } from '@wallet-standard/base';
-import type { BitcoinProvider } from 'sats-connect';
+import type { BitcoinProvider } from '@exodus/sats-connect';
 import { icon } from './icon.js';
 
 export const SatsConnectNamespace = 'sats-connect:';

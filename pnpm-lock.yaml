@@ -317,15 +317,15 @@ importers:
       '@exodus/bitcoin-wallet-standard-chains':
         specifier: workspace:^
         version: link:../../core/chains
+      '@exodus/sats-connect':
+        specifier: ^1.0.0-exodus.0
+        version: 1.0.0-exodus.0
       '@wallet-standard/base':
         specifier: ^1.0.1
         version: 1.0.1
       '@wallet-standard/wallet':
         specifier: ^1.0.1
         version: 1.0.1
-      sats-connect:
-        specifier: ^0.2.0
-        version: 0.2.0
     devDependencies:
       shx:
         specifier: ^0.3.4
@@ -588,6 +588,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@exodus/sats-connect@1.0.0-exodus.0:
+    resolution: {integrity: sha512-8TY78H/M+HPrGa0ym+6PDbmiAPBy2d5OcGSj6CzNoi/3noF/ljHs9cQKBHYecHS9fgIeh822dv2xMW7pCy2aOw==}
+    dependencies:
+      jsontokens: 4.0.1
+      process: 0.11.10
+      util: 0.12.5
+    dev: false
 
   /@humanwhocodes/config-array@0.10.7:
     resolution: {integrity: sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w==}
