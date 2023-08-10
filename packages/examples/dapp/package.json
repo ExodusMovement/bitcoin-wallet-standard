@@ -12,7 +12,6 @@
     },
     "dependencies": {
         "@exodus/bitcoin-wallet-standard-features": "workspace:^",
-        "@exodus/bitcoin-wallet-standard-react": "workspace:^",
         "@exodus/bitcoin-wallet-standard-sats-connect": "workspace:^",
         "@exodus/sats-connect": "^1.0.0-exodus.0",
         "@wallet-standard/react": "^0.1.4",

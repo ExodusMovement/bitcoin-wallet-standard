@@ -147,9 +147,6 @@ importers:
       '@exodus/bitcoin-wallet-standard-features':
         specifier: workspace:^
         version: link:../../core/features
-      '@exodus/bitcoin-wallet-standard-react':
-        specifier: workspace:^
-        version: link:../../react/_
       '@exodus/bitcoin-wallet-standard-sats-connect':
         specifier: workspace:^
         version: link:../../wallets/sats-connect

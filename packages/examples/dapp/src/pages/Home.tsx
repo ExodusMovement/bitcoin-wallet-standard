@@ -1,9 +1,8 @@
-import { useWallet } from '@wallet-standard/react';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { useIsConnected } from '../hooks/useIsConnected';
+import { ConnectionStatusContext } from '../context/ConnectionStatus';
 import { condenseAddress } from '../utils/address';
 
 const Disconnected: FC = () => {
@@ -18,13 +17,13 @@ const Disconnected: FC = () => {
 };
 
 const Connected: FC = () => {
-    const { accounts } = useWallet();
+    const connectionStatus = useContext(ConnectionStatusContext);
 
     return (
         <>
             <h1 className="mb-4 text-lg font-medium uppercase tracking-wide">Accounts</h1>
             <ul>
-                {accounts.map((account, index) => (
+                {connectionStatus?.accounts.map((account, index) => (
                     <li key={index}>
                         <p className="font-mono">{condenseAddress(account.address)}</p>
                     </li>
@@ -35,11 +34,11 @@ const Connected: FC = () => {
 };
 
 export const Home: FC = () => {
-    const isConnected = useIsConnected();
+    const connectionStatus = useContext(ConnectionStatusContext);
 
     return (
         <div className="flex min-h-screen flex-col items-center justify-center">
-            {isConnected ? <Connected /> : <Disconnected />}
+            {connectionStatus?.isConnected ? <Connected /> : <Disconnected />}
         </div>
     );
 };
