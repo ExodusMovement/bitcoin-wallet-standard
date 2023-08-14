@@ -36,9 +36,7 @@ export const Connect: FC = () => {
                         },
                     },
                     onFinish: (response) => {
-                        connectionStatus?.setConnectionStatus({ accounts: response.addresses } as unknown as {
-                            accounts: Account[];
-                        });
+                        connectionStatus?.setAccounts(response.addresses as unknown as Account[]);
                     },
                     onCancel: () => {
                         alert('Request canceled');
