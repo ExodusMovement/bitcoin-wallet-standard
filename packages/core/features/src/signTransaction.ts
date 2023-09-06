@@ -1,4 +1,4 @@
-import type { Wallet, WalletAccount } from '@wallet-standard/base';
+import type { IdentifierString, Wallet, WalletAccount } from '@wallet-standard/base';
 
 /** Name of the feature. */
 export const BitcoinSignTransaction = 'bitcoin:signTransaction';
@@ -45,15 +45,12 @@ export interface BitcoinSignTransactionInput {
     /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly psbt: Uint8Array;
     /** Chain to use. */
-    readonly chain: ArrayElement<Wallet['chains']>;
+    readonly chain: IdentifierString;
     /** Transaction inputs to sign. */
     readonly inputsToSign: InputToSign[];
     /** Whether the wallet should broadcast the signed transaction. */
     readonly broadcast?: boolean;
 }
-
-/** A helper type to infer an array element type. */
-type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
 /**
  * Transaction input to be signed with the specified {@link "@wallet-standard/base".WalletAccount.address}.
