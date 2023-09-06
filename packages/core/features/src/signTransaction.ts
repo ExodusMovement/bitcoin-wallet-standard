@@ -62,7 +62,7 @@ export interface InputToSign {
     /** Account to use. */
     readonly account: WalletAccount;
 
-    /** List of input indexes that should be signed by the address. */
+    /** List of input indexes that should be signed by the account. */
     readonly signingIndexes: number[];
 
     /** A SIGHASH flag. */
