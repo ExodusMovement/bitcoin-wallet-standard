@@ -1,4 +1,4 @@
-import type { IdentifierString, Wallet, WalletAccount } from '@wallet-standard/base';
+import type { IdentifierString, WalletAccount } from '@wallet-standard/base';
 
 /** Name of the feature. */
 export const BitcoinSignTransaction = 'bitcoin:signTransaction';
