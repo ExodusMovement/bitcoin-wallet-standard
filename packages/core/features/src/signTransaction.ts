@@ -53,13 +53,13 @@ export interface BitcoinSignTransactionInput {
 }
 
 /**
- * Transaction input to be signed with the specified {@link "@wallet-standard/base".WalletAccount.address}.
+ * Transaction input to be signed with the specified {@link "@wallet-standard/base".WalletAccount | account}.
  *
  * @group SignTransaction
  * */
 export interface InputToSign {
-    /** Address to use. */
-    address: WalletAccount['address'];
+    /** Account to use. */
+    account: WalletAccount;
     /** List of input indexes that should be signed by the address. */
     signingIndexes: number[];
     /** A SIGHASH flag. */
