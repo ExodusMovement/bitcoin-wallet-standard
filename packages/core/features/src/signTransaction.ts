@@ -66,7 +66,7 @@ export interface InputToSign {
     readonly signingIndexes: number[];
 
     /** A SIGHASH flag. */
-    readonly sigHash?: number;
+    readonly sigHash?: BitcoinSigHashFlag;
 }
 
 /**
@@ -78,3 +78,12 @@ export interface BitcoinSignTransactionOutput {
     /** Signed Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly signedPsbt: Uint8Array;
 }
+
+/** SIGHASH flag. */
+export type BitcoinSigHashFlag =
+    | 'ALL'
+    | 'NONE'
+    | 'SINGLE'
+    | 'ALL|ANYONECANPAY'
+    | 'NONE|ANYONECANPAY'
+    | 'SINGLE|ANYONECANPAY';
