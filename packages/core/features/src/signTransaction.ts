@@ -15,6 +15,7 @@ export type BitcoinSignTransactionFeature = {
     readonly [BitcoinSignTransaction]: {
         /** Version of the feature implemented by the Wallet. */
         readonly version: BitcoinSignTransactionVersion;
+
         /** Method to call to use the feature. */
         readonly signTransaction: BitcoinSignTransactionMethod;
     };
@@ -44,8 +45,10 @@ export type BitcoinSignTransactionMethod = (
 export interface BitcoinSignTransactionInput {
     /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly psbt: Uint8Array;
+
     /** Transaction inputs to sign. */
     readonly inputsToSign: InputToSign[];
+
     /** Chain to use. */
     readonly chain?: IdentifierString;
 }
@@ -58,8 +61,10 @@ export interface BitcoinSignTransactionInput {
 export interface InputToSign {
     /** Account to use. */
     readonly account: WalletAccount;
+
     /** List of input indexes that should be signed by the address. */
     readonly signingIndexes: number[];
+
     /** A SIGHASH flag. */
     readonly sigHash?: number;
 }
