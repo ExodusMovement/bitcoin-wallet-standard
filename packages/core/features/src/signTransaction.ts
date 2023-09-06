@@ -6,7 +6,7 @@ export const BitcoinSignTransaction = 'bitcoin:signTransaction';
 /**
  * `bitcoin:signTransaction` is a {@link "@wallet-standard/base".Wallet.features | feature} that may be implemented by a
  * {@link "@wallet-standard/base".Wallet} to allow the app to request to sign a transaction with the specified
- * {@link "@wallet-standard/base".Wallet.accounts | account}.
+ * {@link "@wallet-standard/base".Wallet.accounts}.
  *
  * @group SignTransaction
  */
@@ -42,28 +42,21 @@ export type BitcoinSignTransactionMethod = (
  * @group SignTransaction
  */
 export interface BitcoinSignTransactionInput {
-    /**
-     * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
-     */
+    /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly psbt: Uint8Array;
-    /**
-     * Chain to use.
-     */
+    /** Chain to use. */
     readonly chain: ArrayElement<Wallet['chains']>;
-    /**
-     * Transaction inputs to sign.
-     */
+    /** Transaction inputs to sign. */
     readonly inputsToSign: InputToSign[];
-    /**
-     * Whether the wallet should broadcast the signed transaction.
-     */
+    /** Whether the wallet should broadcast the signed transaction. */
     readonly broadcast?: boolean;
 }
 
 /** A helper type to infer an array element type. */
 type ArrayElement<A> = A extends readonly (infer T)[] ? T : never;
 
-/** Transaction input to be signed with the specified {@link "@wallet-standard/base".WalletAccount.address}.
+/**
+ * Transaction input to be signed with the specified {@link "@wallet-standard/base".WalletAccount.address}.
  *
  * @group SignTransaction
  * */
@@ -82,12 +75,11 @@ export interface InputToSign {
  * @group SignTransaction
  */
 export interface BitcoinSignTransactionOutput {
-    /**
-     * Partially Signed Bitcoin Transaction (PSBT), as raw bytes.
-     */
+    /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly psbt: Uint8Array;
     /**
      * Transaction hash.
+     *
      * Returned if `broadcast: true` was passed in the {@link BitcoinSignTransactionInput}.
      */
     txId?: string;
