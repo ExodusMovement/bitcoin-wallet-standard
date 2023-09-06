@@ -41,7 +41,6 @@ export type BitcoinConnectMethod = (input: BitcoinConnectInput) => Promise<Bitco
  */
 export interface BitcoinConnectInput {
     /** Type of addresses the app wants to obtain authorization to use. */
-    /** TODO: Improve type to forbid duplicate purposes. */
     readonly purposes: BitcoinAddressPurpose[];
 }
 
