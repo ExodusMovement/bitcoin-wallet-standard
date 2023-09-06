@@ -57,11 +57,11 @@ export interface BitcoinSignTransactionInput {
  * */
 export interface InputToSign {
     /** Account to use. */
-    account: WalletAccount;
+    readonly account: WalletAccount;
     /** List of input indexes that should be signed by the address. */
-    signingIndexes: number[];
+    readonly signingIndexes: number[];
     /** A SIGHASH flag. */
-    sigHash?: number;
+    readonly sigHash?: number;
 }
 
 /**
