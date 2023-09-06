@@ -44,10 +44,10 @@ export type BitcoinSignTransactionMethod = (
 export interface BitcoinSignTransactionInput {
     /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly psbt: Uint8Array;
-    /** Chain to use. */
-    readonly chain: IdentifierString;
     /** Transaction inputs to sign. */
     readonly inputsToSign: InputToSign[];
+    /** Chain to use. */
+    readonly chain?: IdentifierString;
 }
 
 /**
