@@ -72,8 +72,8 @@ export interface InputToSign {
  * @group SignTransaction
  */
 export interface BitcoinSignTransactionOutput {
-    /** Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
-    readonly psbt: Uint8Array;
+    /** Signed Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
+    readonly signedPsbt: Uint8Array;
     /**
      * Transaction hash.
      *
