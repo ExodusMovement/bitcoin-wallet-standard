@@ -48,8 +48,6 @@ export interface BitcoinSignTransactionInput {
     readonly chain: IdentifierString;
     /** Transaction inputs to sign. */
     readonly inputsToSign: InputToSign[];
-    /** Whether the wallet should broadcast the signed transaction. */
-    readonly broadcast?: boolean;
 }
 
 /**
@@ -74,10 +72,4 @@ export interface InputToSign {
 export interface BitcoinSignTransactionOutput {
     /** Signed Partially Signed Bitcoin Transaction (PSBT), as raw bytes. */
     readonly signedPsbt: Uint8Array;
-    /**
-     * Transaction hash.
-     *
-     * Returned if `broadcast: true` was passed in the {@link BitcoinSignTransactionInput}.
-     */
-    txId?: string;
 }
