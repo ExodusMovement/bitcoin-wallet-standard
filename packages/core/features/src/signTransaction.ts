@@ -5,7 +5,7 @@ export const BitcoinSignTransaction = 'bitcoin:signTransaction';
 
 /**
  * `bitcoin:signTransaction` is a {@link "@wallet-standard/base".Wallet.features | feature} that may be implemented by a
- * {@link "@wallet-standard/base".Wallet} to allow the app to request to sign a transaction with the specified
+ * {@link "@wallet-standard/base".Wallet} to allow the app to request to sign transactions with the specified
  * {@link "@wallet-standard/base".Wallet.accounts}.
  *
  * @group SignTransaction
@@ -33,8 +33,8 @@ export type BitcoinSignTransactionVersion = '1.0.0';
  * @group SignTransaction
  */
 export type BitcoinSignTransactionMethod = (
-    input: BitcoinSignTransactionInput
-) => Promise<BitcoinSignTransactionOutput>;
+    ...inputs: readonly BitcoinSignTransactionInput[]
+) => Promise<readonly BitcoinSignTransactionOutput[]>;
 
 /**
  * Input for the {@link BitcoinSignTransactionMethod}.
