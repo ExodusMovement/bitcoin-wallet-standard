@@ -38,7 +38,7 @@ export type BitcoinSignMessageVersion = '1.0.0';
  * @group SignMessage
  */
 export type BitcoinSignMessageMethod = (
-    ...input: BitcoinSignMessageInput[]
+    ...inputs: readonly BitcoinSignMessageInput[]
 ) => Promise<readonly BitcoinSignMessageOutput[]>;
 
 /**
