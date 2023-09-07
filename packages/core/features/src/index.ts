@@ -1,8 +1,9 @@
 import type { WalletWithFeatures } from '@wallet-standard/base';
+
 import type { BitcoinConnectFeature } from './connect.js';
 import type { BitcoinSignAndSendTransactionFeature } from './signAndSendTransaction.js';
-import type { BitcoinSignTransactionFeature } from './signTransaction.js';
 import type { BitcoinSignMessageFeature } from './signMessage.js';
+import type { BitcoinSignTransactionFeature } from './signTransaction.js';
 
 /** Type alias for some or all Bitcoin features. */
 export type BitcoinFeatures =
