@@ -25,7 +25,9 @@ const Connected: FC = () => {
             <ul>
                 {connectionStatus?.accounts.map((account, index) => (
                     <li key={index}>
-                        <p className="font-mono">{condenseAddress(account.address)}</p>
+                        <p className="font-mono">
+                            {account.purpose}: {condenseAddress(account.address)}
+                        </p>
                     </li>
                 ))}
             </ul>

@@ -1,7 +1,7 @@
-import type { BitcoinNetworkType } from 'sats-connect';
+export type Purpose = 'payment' | 'ordinals';
 
 export type Account = {
     address: string;
     publicKey: string;
-    purpose: BitcoinNetworkType;
+    purpose: Purpose;
 };
