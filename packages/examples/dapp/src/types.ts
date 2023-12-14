@@ -1,4 +1,4 @@
-import type { BitcoinNetworkType } from '@exodus/sats-connect';
+import type { BitcoinNetworkType } from 'sats-connect';
 
 export type Account = {
     address: string;

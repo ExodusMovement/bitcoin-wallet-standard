@@ -150,9 +150,6 @@ importers:
       '@exodus/bitcoin-wallet-standard-sats-connect':
         specifier: workspace:^
         version: link:../../wallets/sats-connect
-      '@exodus/sats-connect':
-        specifier: ^1.0.0-exodus.0
-        version: 1.0.0-exodus.0
       '@wallet-standard/react':
         specifier: ^0.1.4
         version: 0.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -168,6 +165,9 @@ importers:
       react-router-dom:
         specifier: ^6.4.2
         version: 6.4.2(react-dom@18.2.0)(react@18.2.0)
+      sats-connect:
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       '@types/react':
         specifier: ^18.0.21
@@ -323,15 +323,15 @@ importers:
       '@exodus/bitcoin-wallet-standard-chains':
         specifier: workspace:^
         version: link:../../core/chains
-      '@exodus/sats-connect':
-        specifier: ^1.0.0-exodus.0
-        version: 1.0.0-exodus.0
       '@wallet-standard/base':
         specifier: ^1.0.1
         version: 1.0.1
       '@wallet-standard/wallet':
         specifier: ^1.0.1
         version: 1.0.1
+      sats-connect:
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       shx:
         specifier: ^0.3.4
@@ -594,14 +594,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@exodus/sats-connect@1.0.0-exodus.0:
-    resolution: {integrity: sha512-8TY78H/M+HPrGa0ym+6PDbmiAPBy2d5OcGSj6CzNoi/3noF/ljHs9cQKBHYecHS9fgIeh822dv2xMW7pCy2aOw==}
-    dependencies:
-      jsontokens: 4.0.1
-      process: 0.11.10
-      util: 0.12.5
-    dev: false
 
   /@humanwhocodes/config-array@0.10.7:
     resolution: {integrity: sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w==}
@@ -6022,6 +6014,14 @@ packages:
 
   /sats-connect@0.2.0:
     resolution: {integrity: sha512-PEeqgPmAASPwGnBRmKYAmOey2HRbzW733EOVia067MoDAoai+/Buzx1NzaJ5FXZzpzHbG2YFQDp+43vkFWTQxw==}
+    dependencies:
+      jsontokens: 4.0.1
+      process: 0.11.10
+      util: 0.12.5
+    dev: false
+
+  /sats-connect@1.0.0:
+    resolution: {integrity: sha512-GPEw9rx4n3iJi54/z6gWRRLty1E8FO2IrP94j3g+R1hzbVPa8tvHTW8cpGytP1JIBcMIETOFaQQ0T6qU2bk2EQ==}
     dependencies:
       jsontokens: 4.0.1
       process: 0.11.10

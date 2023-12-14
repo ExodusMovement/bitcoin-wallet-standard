@@ -1,5 +1,5 @@
 import { useWallet, useWallets } from '@wallet-standard/react';
-import { getAddress, AddressPurpose, BitcoinNetworkType } from '@exodus/sats-connect';
+import { getAddress, AddressPurpose, BitcoinNetworkType } from 'sats-connect';
 import classNames from 'classnames';
 import type { FC } from 'react';
 import React, { useContext, useEffect } from 'react';
